@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Домашнее задание 3</title>
+</head>
+
+<body>
+  <h3>Задание 1</h3>
+  <div id="task1"></div>
+  <h3>Задание 2</h3>
+  <div id="task2"></div>
+  <h3>Задание 3</h3>
+  <div id="task3"></div>
+  <h3>Задание 4</h3>
+  <div id="task4"></div>
+
+  <script>
+    // Задание 1 
+    // Задайте одномерный массив из 10 целых чисел от 1 до 100. Найдите количество элементов массива, значения которых лежат в отрезке [20,90].
+
+    const arr = [1, 10, 23, 34, 45, 50, 60, 70, 80, 90];
+    document.querySelector('#task1').innerHTML =
+      `Дан массив ${arr} 
+      Значения в отрезке [20,90]: ${arr.filter((element) => (element >= 20) && (element <= 90))}`;
+
+    // Задание 2
+    // Задайте массив на 10 целых чисел. Напишите программу, которая определяет количество чётных чисел в массиве.
+
+    const arr2 = [1, 10, 23, 35, 44, 50, 61, 72, 83, 90];
+
+    function countEvenNumbers(array) {
+      // Фильтр выдаёт массив четных чисел. Его длина равана количеству таких чисел
+      return array.filter((element) => element % 2 == 0).length;
+    }
+
+    document.querySelector('#task2').innerHTML =
+      `Дан массив ${arr2} 
+      Чётных чисел в массиве: ${countEvenNumbers(arr2)}`;
+
+
+    // Задание 3
+    // Задайте массив из вещественных чисел с ненулевой дробной частью. Найдите разницу между максимальным и минимальным элементов массива. 
+
+    const arr3 = [0.32332, 32.356, 5.1131, 323.30, 99.99, 0.944];
+
+    // Метод reduce получает единое значение из массива в зависимости от введенной функции
+    const minNumber = arr3.reduce((num1, num2) => Math.min(num1, num2)); // 0.32332
+    const maxNumber = arr3.reduce((num1, num2) => Math.max(num1, num2)); // 323.30
+
+    document.querySelector('#task3').innerHTML =
+      `Дан массив ${arr3} 
+      Разница между мин и макс числами равна: ${maxNumber - minNumber}`;
+
+    // Задание 4
+    // **(не обязательно): Дано натуральное число в диапазоне от 1 до 100 000. Создайте массив, состоящий из цифр этого числа. Старший разряд числа должен располагаться на 0-м индексе массива, младший – на последнем. Размер массива должен быть равен количеству цифр.
+
+    const givenNumber = 45321;
+    console.log(givenNumber.toString().split('')) // Тип "Array"
+    document.querySelector('#task4').innerHTML =
+      `Преобразованное число ${givenNumber} теперь выглядит как: [${givenNumber.toString().split('')}]`;
+  </script>
+</body>
+
+</html>
