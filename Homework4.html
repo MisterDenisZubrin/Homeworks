@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Домашнее задание 4</title>
+</head>
+
+<body>
+  <h3>Задание 1</h3>
+  <p>Нажатие на кнопку запустит бесконечный запрос целых чисел. Программа завершается при вводе символа q или при вводе
+    числа, сумма цифр которого чётная.</p>
+  <button id="start">Нажмите для </button>
+  <h3>Задание 2</h3>
+  <div id="task2"></div>
+  <h3>Задание 3</h3>
+  <div id="task3"></div>
+
+  <script>
+    // Задание 1
+    // Напишите программу, которая бесконечно запрашивает целые числа с консоли. Программа завершается при вводе символа ‘q’ или при вводе числа, сумма цифр которого чётная.
+
+    function requireEvenNumber() {
+      const userAnswer = prompt('Введите целое чётное число');
+      if (userAnswer === '' || isNaN(+userAnswer)) {
+        requireEvenNumber();
+      } else {
+        userAnswer % 2 == 0 ? alert('Победа!') : requireEvenNumber();
+        return;
+      }
+    }
+    document.querySelector('#start').addEventListener('click', requireEvenNumber);
+
+    // Задание 2
+    // Задайте массив заполненный случайными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
+
+    const randomNumbersArr = [];
+    for (let i = 0; i < 10; i++) {
+      randomNumbersArr.push(Math.floor((Math.random() * (999 - 100)) + 100));
+    }
+
+    function countEvenNumbers(array) {
+      // Фильтр выдаёт массив четных чисел. Его длина равана количеству таких чисел
+      return array.filter((element) => element % 2 == 0).length;
+    }
+
+    document.querySelector('#task2').innerHTML =
+      `Рандомных трехзначных чисел массив (10 чисел): ${randomNumbersArr} 
+      Чётных чисел в массиве: ${countEvenNumbers(randomNumbersArr)}`;
+
+    // Задание 3
+    // Напишите программу, которая перевернёт одномерный массив (первый элемент станет последним, второй – предпоследним и т.д.)
+
+    document.querySelector('#task3').innerHTML =
+      `Беру рандомный массив из прошлого примера ${randomNumbersArr} 
+      Перевернул его: ${randomNumbersArr.reverse()}`;
+  </script>
+</body>
+
+</html>
